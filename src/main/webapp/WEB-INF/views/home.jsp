@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<img src="/img/bye.gif">
 home
 </body>
 </html>

@@ -15,8 +15,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable(); // CSRF 설정 해제 (초기 개발시 꺼놓고 작업)
 
 		http.authorizeRequests()
-				// .antMatchers("/user/**").hasAnyRole("USER")
-				// .antMatchers("/admin/**").hasAnyRole("ADMIN")
+				.antMatchers("/user/**").hasAnyRole("USER")
+				.antMatchers("/admin/**").hasAnyRole("ADMIN")
 				.antMatchers("/**").permitAll();
 
 		http.formLogin();
