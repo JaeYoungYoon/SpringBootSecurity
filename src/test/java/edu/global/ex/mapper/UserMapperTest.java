@@ -27,8 +27,8 @@ class UserMapperTest {
 //      public void insertAuthorities(UserVO UserVO);
 
 		UserVO user = new UserVO();
-		user.setUsername("kim2");
-		user.setPassword(new BCryptPasswordEncoder().encode("kim2"));
+		user.setUsername("kim4");
+		user.setPassword(new BCryptPasswordEncoder().encode("1234"));
 		user.setEnabled(1);
 
 		userMapper.insertUser(user);
