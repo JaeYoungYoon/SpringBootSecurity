@@ -42,6 +42,13 @@ public class UserDetailsVO implements UserDetails {
 		this.authorities = authorities;
 	}
 
+	// 임의의 함수
+	public String getCart() {
+		return "장바구니";
+	}
+	
+	///////////////////////////////////////////////////////////
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
