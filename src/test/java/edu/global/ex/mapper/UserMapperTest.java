@@ -41,7 +41,7 @@ class UserMapperTest {
 
 	@Test
 	void testPasswordEncoder() {
-		String plainPW = "12345";
+		String plainPW = "1234";
 		String encodedPW = passwordEncoder.encode(plainPW);
 
 		System.out.println("plain : " + plainPW + " / encoded : " + encodedPW);
