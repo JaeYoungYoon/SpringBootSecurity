@@ -2,6 +2,7 @@ package edu.global.ex.mapper;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,44 +18,32 @@ class UserMapperTest {
 
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	@Autowired
 	private UserVO userVO;
-
-	/*
-	 * @Test void testInsertUser() {
-	 * 
-	 * UserVO user = new UserVO(); user.setUsername("kim4"); user.setPassword(new
-	 * BCryptPasswordEncoder().encode("1234")); user.setEnabled(1);
-	 * 
-	 * userMapper.insertUser(user); userMapper.insertAuthorities(user); }
-	 * 
-	 * @Test void testInsertAdminUser() { UserVO user = new UserVO();
-	 * user.setUsername("admin2"); user.setPassword(new
-	 * BCryptPasswordEncoder().encode("admin2")); user.setEnabled(1);
-	 * 
-	 * userMapper.insertUser(user); userMapper.insertAdminAuthorities(user); }
-	 */
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	@Disabled
 	@Test
-	void testPasswordEncoder() {
-		String plainPW = "1234";
-		String encodedPW = passwordEncoder.encode(plainPW);
-
-		System.out.println("plain : " + plainPW + " / encoded : " + encodedPW);
-		System.out.println(passwordEncoder.matches(plainPW, encodedPW));
-		
-		
-		System.out.println(userVO);
-
-		/* ============================================================== */
-
-		// assertNotEquals(plainPW, encodedPW);
-		// assertEquals(plainPW, encodedPW);
-		// assertTrue(new BCryptPasswordEncoder().matches(plainPW, encodedPW));
+	void insertUserTest() {
+		UserVO user = new UserVO();
+		user.setUsername("kim5");
+		user.setPassword(new BCryptPasswordEncoder().encode("1234"));
+		user.setEnabled(1);
+		userMapper.insertUser(user);
+		userMapper.insertAuthorities(user);
 	}
-
+	
+	@Test
+	void insertAdminTest() {
+		UserVO user = new UserVO();
+		user.setUsername("admin5");
+		user.setPassword(new BCryptPasswordEncoder().encode("admin5"));
+		user.setEnabled(1);
+		userMapper.insertUser(user);
+		userMapper.insertAdminAuthorities(user);
+	}
+	
 }
