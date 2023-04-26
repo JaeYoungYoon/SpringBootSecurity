@@ -2,19 +2,31 @@ package edu.global.ex.controller;
 
 import java.security.Principal;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.global.ex.service.UserService;
+import edu.global.ex.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
 public class LoginController {
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private PasswordEncoder encoder;
+
 	@GetMapping("/login")
 	public String login() {
 		log.info("login() ..");
@@ -38,6 +50,25 @@ public class LoginController {
 		// 3.Principal 객체로 가져오는 방법(가져올수 있는게 getName() 정도
 		System.out.println("Principal 유저 아이디:" + principal.getName());
 
+		return "redirect:/";
+	}
+
+	@GetMapping("/addUser/{id}/{pw}")
+	public String addUser(@PathVariable String id, @PathVariable String pw) throws Exception {
+		System.out.println(id + " : " + pw);
+
+		UserVO user = new UserVO();
+		user.setEnabled(1);
+		user.setUsername(id);
+		user.setPassword(encoder.encode(pw.toString().trim()));
+
+		System.out.println(user);
+
+		// userService.addUser(user);
+		// userService.addUser2(user);
+		// userService.addUser3(user);
+		// userService.addUser4(user);
+		userService.addUser5(user);
 		return "redirect:/";
 	}
 
