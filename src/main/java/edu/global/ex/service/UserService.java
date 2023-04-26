@@ -61,5 +61,15 @@ public class UserService {
 
 		throw new RuntimeException("Exception (Unchecked Exception)");
 	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	public void addUser6(UserVO user) throws Exception {
+		log.info("addUser()..");
+
+		userMapper.insertUser(user); 
+		userMapper.insertAuthorities(user);
+
+		throw new Exception("Exception (Checked Exception)");
+	}
 
 }

@@ -68,7 +68,8 @@ public class LoginController {
 		// userService.addUser2(user);
 		// userService.addUser3(user);
 		// userService.addUser4(user);
-		userService.addUser5(user);
+		// userService.addUser5(user);
+		userService.addUser6(user);
 		return "redirect:/";
 	}
 
